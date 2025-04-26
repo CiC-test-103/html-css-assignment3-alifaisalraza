@@ -47,6 +47,240 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /** Your CSS Below **/
+body {
+  background-color: var(--clr-stone100);
+}
+
+.Recipe {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 10vh 10vw; /* Margins scale with viewport width/height */ 
+  min-height: 90vh; 
+  padding: 1em;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  border-radius: 2%;
+  overflow: auto;
+}
+
+/* ✨ Add this for mobile responsiveness */
+@media (max-width: 768px) {
+  .Recipe {
+    margin: 3vh 3vw; /* Smaller margins on tablet/mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .Recipe {
+    margin: 2vh 2vw; /* Even smaller on very small phones */
+  }
+}
+
+.Recipe #Intro,
+.Recipe #Prep,
+.Recipe #Ingredients,
+.Recipe #Instruc,
+.Recipe #Nutri {
+  flex-shrink: 0;
+  flex-grow: 0;
+  flex-basis: auto;
+}
+
+.Recipe #Intro {
+  margin-top: 1em;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.Recipe #Intro h1 {
+  font-size: calc(var(--font-header) * 0.7);
+  font-family: var(--fs-accent);
+  font-weight: var(--fw-regular);
+}
+
+.Recipe #Intro p {
+  max-width: 100%;
+  font-family: var(--fs-base);
+  font-size: calc(var(--font-paragraph) * 0.75);
+  color: var(--clr-stone600);
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  word-wrap: break-word;
+}
+
+.Recipe #Prep {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 1em;
+  margin-top: 1em;
+  font-family: var(--fs-base);
+  background-color: var(--clr-rose900);
+  color: var(--clr-stone600);
+}
+
+.Recipe #Prep #Title {
+  font-size: calc(var(--font-paragraph) * 0.9);
+  color: var(--clr-rose800);
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+} 
+
+.Recipe #Prep #List {
+  list-style-position: inside;
+  padding-left: 0;
+  margin-left: 0;
+  font-size: 0.75em
+}
+
+.Recipe #Prep #List li {
+ margin-top: 0.5em;
+ margin-bottom: 0.5em;
+}
+
+.Recipe #Prep #List li::marker {
+  color: var(--clr-brown800);
+ }
+
+.Recipe #Ingredients {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 1em;
+  color: var(--clr-stone600);
+}
+
+.Recipe #Ingredients #Title {
+  font-family: var(--fs-accent);
+  font-size: calc(var(--font-sub-header) * 0.8);
+  font-weight: var(--fw-regular);
+  color: var(--clr-brown800);
+  margin-bottom: 0.25em;
+} 
+
+.Recipe #Ingredients #List {
+  list-style-position: inside;
+  padding-left: 0;
+  margin-left: 0;
+  font-family: var(--fs-base);
+  font-size: 0.75em
+}
+
+.Recipe #Ingredients #List li {
+ margin-top: 0.5em;
+ margin-bottom: 0.5em;
+}
+
+.Recipe #Ingredients #List li::marker {
+  color: var(--clr-brown800);
+ }
+
+.Recipe #Instruc {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 0em;
+  color: var(--clr-stone600);
+}
+
+.Recipe #Instruc #Title {
+  font-family: var(--fs-accent);
+  font-size: calc(var(--font-sub-header) * 0.8);
+  font-weight: var(--fw-regular);
+  color: var(--clr-brown800);
+  margin-bottom: 0.25em;
+} 
+
+.Recipe #Instruc #List {
+  list-style: none;
+  padding-left: 0em;
+  margin-left: 0;
+  counter-reset: my-counter; /*initialize counter */
+}
+
+.Recipe #Instruc #List li {
+  position: relative;
+  padding-left: 1.75em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-family: var(--fs-base);
+  font-size: 0.75em;
+}
+
+.Recipe #Instruc #List li::before {
+  counter-increment: my-counter; /* increment our custom counter */
+  content: counter(my-counter) "."; /* show number with a dot */
+  position: absolute;
+  left: 0;
+  color: var(--clr-brown800);
+  font-weight: bold;
+  font-size: 1em;
+ }
+
+ .Recipe #Nutri {
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 0em;
+  color: var(--clr-stone600);
+}
+
+.Recipe #Nutri #Title {
+  font-family: var(--fs-accent);
+  font-size: calc(var(--font-sub-header) * 0.8);
+  font-weight: var(--fw-regular);
+  color: var(--clr-brown800);
+  margin-bottom: 0.25em;
+}
+
+.Recipe #Nutri #desc {
+  font-family: var(--fs-base);
+  font-size: 0.75em;
+}
+
+.Recipe #Nutri #table {
+  margin-top: 0.5em;
+  width: 100%;
+  font-family: var(--fs-base);
+  font-size: 0.7em;
+  border-collapse: collapse;
+}
+
+.Recipe #Nutri #table tr{
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+
+.Recipe #Nutri #table td:first-child{
+  width: 50%;
+  text-align: left;
+  padding-left: 1em;
+  padding-bottom: 0.75em;
+  border-bottom: 1px solid color-mix(in srgb, var(--clr-stone900) 20%, white 80%);
+}
+
+
+.Recipe #Nutri #table td:nth-child(2) {
+  width: 50%;
+  text-align: left;
+  padding-left: 1em;
+  padding-bottom: 0.75em;
+  border-bottom: 1px solid color-mix(in srgb, var(--clr-stone900) 20%, white 80%);
+  color: var(--clr-brown800);
+}
+
+.Recipe #Nutri #table tr:last-child td {
+  border-bottom: none;
+}
+
+
+.Recipe .section-divider {
+  height: 0.025rem;
+  /*background-color: var(--clr-stone900);*/
+  background-color: color-mix(in srgb, var(--clr-stone900) 20%, white 80%);
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 100%;    /* Divider width responsive to viewport width */
+}
+
 
 /** Attribution CSS **/
 .attribution { font-size: 11px; text-align: center; }
